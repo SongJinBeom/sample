@@ -35,7 +35,7 @@
 <style>
 
   .links line {
-    stroke: #999;
+    stroke: rgb(255, 0, 221);
     stroke-opacity: 0.6;
   }
   
@@ -82,7 +82,7 @@
       .enter().append("g")
       
     var circles = node.append("circle")
-        .attr("r", 5)
+        .attr("r", 6)
         .attr("fill", function(d) { return color(d.group); })
         .call(d3.drag()
             .on("start", dragstarted)
