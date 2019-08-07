@@ -36,7 +36,7 @@
 
   .links line {
     stroke: #aaa;
-    stroke-opacity: 2;
+    stroke-opacity: 0.5;
   }
   
   .nodes circle {
@@ -63,7 +63,7 @@
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(function(d) { return d.id; }))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2));
+      .force("center", d3.forceCenter(width, height));
   
   d3.json("g1.json", function(error, graph) {
 
@@ -81,7 +81,7 @@
         .enter().append("g")
       
     var circles = node.append("circle")
-        .attr("r", 6)
+        .attr("r", 10)
         .attr("fill", function(d) { return color(d.group); })
         .call(d3.drag()
             .on("start", dragstarted)
