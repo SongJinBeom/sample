@@ -1,22 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>HTML</title>
-  <meta charset="utf-8">
+    <title>index</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 
 <body>
-  <h1><a href="index.html">HTML - 1</a></h1>
-  <ol>
-    <li><a href="g1.html">g1</a></li>
-    <li><a href="g2.html">g2</a></li>
-    <li><a href="g3.html">g3</a></li>
-    <li><a href="g4.html">g4</a></li>
-  </ol>
+    <h1><a href="index.html">HTML - 1</a></h1>
+    <ol>
+      <li><a href="g1.html">g1</a></li>
+      <li><a href="g2.html">g2</a></li>
+      <li><a href="g3.html">g3</a></li>
+      <li><a href="g4.html">g4</a></li>
+    </ol>
+  
+  
+    <h2>index</h2>
 
-
-  <h2>HTML - 2</h2>
-</body>
-
+    <p id="p1">First paragraph</p>
+    <p id="p2">Second paragraph</p>
+    <p id="p3">fourth att </p>
+    <script>
+        d3.select("#p1").insert("p").text("1111");
+        d3.select("#p1").append("pk").text("2222");
+        d3.select("#p1").insert("p").text("3333");
+        d3.select("#p1").insert("p", "pk").text("4444");
+    </script>
+  </body>
+  
 </html>
