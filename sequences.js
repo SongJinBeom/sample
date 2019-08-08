@@ -150,7 +150,8 @@ function initializeBreadcrumbTrail() {
   var trail = d3.select("#sequence").append("svg:svg")
       .attr("width", width)
       .attr("height", 50)
-      .attr("id", "trail");
+      .attr("id", "trail")
+      .attr("style", "border: 1px solid black;");
   // Add the label at the end, for the percentage.
   trail.append("svg:text")
     .attr("id", "endlabel")
