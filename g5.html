@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>G1</title>
+  <title>local G5</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-  <script type="text/javascript">
-  $.ajax({
-      type : 'GET',
-      contentType : 'application/json',
-      url : 'https://externalUrl',
-      dataType : 'json',
-      success : function (res) {
-      },
-      error : function (res, status, err) { 
-      }
-  });
-  </script>
+  <script type="text/javascript"></script>
 </head>
 
 
 <body>
-  <h1><a href="index.html">HTML - 1</a></h1>
+  <h1><a href="index.html">Sample
+  </a></h1>
   <ol>
     <li><a href="g1.html">g1</a></li>
     <li><a href="g2.html">g2</a></li>
     <li><a href="g3.html">g3</a></li>
     <li><a href="g4.html">g4</a></li>
+    <li><a href="g5.html">g5</a></li>
   </ol>
 
 
@@ -35,7 +25,7 @@
 <style>
 
   .links line {
-    stroke: #aaa;
+    stroke: rgb(175, 175, 175);
     stroke-opacity: 0.5;
   }
   
@@ -50,7 +40,7 @@
   }
   
   </style>
-  <svg width="1000" height="600"></svg>
+  <svg width="1000" height="1000"></svg>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script>
   
@@ -63,25 +53,27 @@
   var simulation = d3.forceSimulation()
       .force("link", d3.forceLink().id(function(d) { return d.id; }))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width/2, height/2));
+      .force("center", d3.forceCenter(width/3, height/3));
   
-  d3.json("g1.json", function(error, graph) {
+  d3.json("https://songjinbeom.github.io/sample/g1.json", function(error, graph) {
 
     var link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
         .data(graph.links)
-        .enter().append("line")
+        .enter()
+        .append("line")
         .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
   
     var node = svg.append("g")
         .attr("class", "nodes")
         .selectAll("g")
         .data(graph.nodes)
-        .enter().append("g")
+        .enter()
+        .append("g")
       
     var circles = node.append("circle")
-        .attr("r", 5)
+        .attr("r", 8)
         .attr("fill", function(d) { return color(d.group); })
         .call(d3.drag()
             .on("start", dragstarted)
@@ -92,11 +84,11 @@
         .text(function(d) {
           return d.id;
         })
-        .attr('x', 6)
+        .attr('x', 5)
         .attr('y', 3);
   
     node.append("title")
-        .text(function(d) { return d.id; });
+        .text(function(d) { return d.group; });
   
     simulation
         .nodes(graph.nodes)
@@ -107,14 +99,14 @@
   
     function ticked() {
       link
-          .attr("x1", function(d) { return d.source.x; })
-          .attr("y1", function(d) { return d.source.y; })
-          .attr("x2", function(d) { return d.target.x; })
-          .attr("y2", function(d) { return d.target.y; });
+          .attr("x1", function(d) { return d.source.x*1.5; })
+          .attr("y1", function(d) { return d.source.y*1.5; })
+          .attr("x2", function(d) { return d.target.x*1.5; })
+          .attr("y2", function(d) { return d.target.y*1.5; });
   
       node
           .attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
+            return "translate(" + d.x*1.5 + "," + d.y*1.5 + ")";
           })
     }
   });
