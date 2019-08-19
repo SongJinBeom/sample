@@ -38,8 +38,9 @@
     font-family: sans-serif;
     font-size: 10px;
   }
-  
   </style>
+
+
   <svg width="600" height="600" style="border: 1px solid black;"></svg>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script>
@@ -73,7 +74,8 @@
         .append("g")
       
     var circles = node.append("circle")
-        .attr("r", 5)
+        .data(graph.nodes)
+        .attr("r", function(d){return d.group;})
         .attr("fill", function(d) { return color(d.group); })
         .call(d3.drag()
             .on("start", dragstarted)
